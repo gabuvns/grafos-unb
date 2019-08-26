@@ -60,7 +60,6 @@ class Grafo{
             }
 
             //Aqui testamos os dois numeros por ser um grafo sem direção
-            
             for(auto iterator : this->matriz[num1-1].conexoes){
                 if(num2 == iterator){
                     num1Repetido = 1;
