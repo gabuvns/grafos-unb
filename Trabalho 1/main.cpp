@@ -17,31 +17,30 @@ fstream read_file(){
     }
 
     return arquivo;
-
 }
 
 
 int main(){
-    
     fstream arquivo = read_file();
     
-    //O segundo numero representa o vertice a ser adicionado e o primeiro sua conexao
+    //Os numeros representam conexão bidirecionais
     int read_number[2];
 
-    grafo graph;
+    Grafo graph;
     
-
     //Lendo os numeros do arquivo
     //Assim que a linha é lida, é adicionada ao grafo e passa pra proxima linha
+    int conexoes = 0;
     while(!arquivo.eof()){
         for(int j = 0; j < 2;j++){
             arquivo >> read_number[j];
-            
         }
         graph.addVertice(read_number[1], read_number[0]);
+        conexoes++;
     }
-
+    graph.setConexoesTotal(conexoes);
     graph.printGrafo();
 
     arquivo.close();
+    return 0;
 }

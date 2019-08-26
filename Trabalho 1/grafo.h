@@ -3,13 +3,16 @@
 
 using namespace std;
 
-class vertice{
+class Vertice{
     private:
-        int numero = -1;
-        int grau = 0;
+        int numero;
+        int grau;
         
-
     public:
+        Vertice(){
+            numero = -1;
+            grau = 0;    
+        }
         list<int> conexoes;
 
         int getGrau(){
@@ -29,12 +32,20 @@ class vertice{
         }
 };
 
-
-class grafo{
+class Grafo{
     private:
-        vertice matriz[TAM];
+        Vertice matriz[TAM];
+        int conexoesTotal;
     
     public:
+        Grafo(){
+            conexoesTotal = 0;
+        }
+
+        void setConexoesTotal(int number){
+            this->conexoesTotal = number;
+        }
+
         void addVertice(int num1, int num2){
             int num1Repetido = 0;
             int num2Repetido = 0;
@@ -49,7 +60,7 @@ class grafo{
             }
 
             //Aqui testamos os dois numeros por ser um grafo sem direção
-            //
+            
             for(auto iterator : this->matriz[num1-1].conexoes){
                 if(num2 == iterator){
                     num1Repetido = 1;
@@ -72,16 +83,17 @@ class grafo{
 
         }
 
-        //O primeiro numero representa o item, e os subsequentes suas conexoes
         void printGrafo(){
-            cout << "Indice" << "     " << "Conexoes" << endl;
             for(int i = 0; i < TAM ; i ++){
-                cout << matriz[i].getNumero() << "(" <<matriz[i].getGrau() << ")";
+                cout << "Indice: " << matriz[i].getNumero() << endl;
+                cout << "Grau: " <<matriz[i].getGrau() << endl;
+                cout << "Conexoes: ";
 
                 for(auto iterator : matriz[i].conexoes){
-                    cout << "->" << iterator;
+                    cout << iterator << " "; 
                 }
-                cout << "\n";
+                cout << "\n==============================================\n";
             }
+            cout << "Total de Conexoes: " << conexoesTotal << endl;
         }
 };
