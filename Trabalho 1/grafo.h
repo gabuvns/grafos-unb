@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+
 #define TAM 62
 
 using namespace std;
@@ -34,7 +36,7 @@ class Vertice{
 
 class Grafo{
     private:
-        Vertice matriz[TAM];
+        Vertice vetor[TAM];
         int conexoesTotal;
     
     public:
@@ -50,45 +52,45 @@ class Grafo{
             int num1Repetido = 0;
             int num2Repetido = 0;
 
-            //Verifica se o numero ja existe ou nao na matriz
-            if(this->matriz[num1-1].getNumero() == -1){
-                this->matriz[num1-1].setNumero(num1); 
+            //Verifica se o numero ja existe ou nao na vetor
+            if(this->vetor[num1-1].getNumero() == -1){
+                this->vetor[num1-1].setNumero(num1); 
             }
 
-            if(this->matriz[num2-1].getNumero() == -1){
-                this->matriz[num2-1].setNumero(num2); 
+            if(this->vetor[num2-1].getNumero() == -1){
+                this->vetor[num2-1].setNumero(num2); 
             }
 
             //Aqui testamos os dois numeros por ser um grafo sem direção
-            for(auto iterator : this->matriz[num1-1].conexoes){
+            for(auto iterator : this->vetor[num1-1].conexoes){
                 if(num2 == iterator){
                     num1Repetido = 1;
                 }
             }
 
             if(!num1Repetido){
-                this->matriz[num1-1].addConexao(num2);
+                this->vetor[num1-1].addConexao(num2);
             }
 
-            for(auto iterator : this->matriz[num2-1].conexoes){
+            for(auto iterator : this->vetor[num2-1].conexoes){
                 if(num1 == iterator){
                     num2Repetido = 1;
                 }
             }
 
             if(!num2Repetido){
-                this->matriz[num2-1].addConexao(num1);
+                this->vetor[num2-1].addConexao(num1);
             }
 
         }
 
         void printGrafo(){
             for(int i = 0; i < TAM ; i ++){
-                cout << "Indice: " << matriz[i].getNumero() << endl;
-                cout << "Grau: " <<matriz[i].getGrau() << endl;
+                cout << "Indice: " << vetor[i].getNumero() << endl;
+                cout << "Grau: " <<vetor[i].getGrau() << endl;
                 cout << "Conexoes: ";
 
-                for(auto iterator : matriz[i].conexoes){
+                for(auto iterator : vetor[i].conexoes){
                     cout << iterator << " "; 
                 }
                 cout << "\n==============================================\n";

@@ -1,3 +1,8 @@
+/*Desenvolvido por:
+Carlos Gabriel Vilas Novas Soares  
+Carolina Estrella
+*/
+
 #include <iostream>
 #include <list>
 #include <iterator>
@@ -6,8 +11,6 @@
 #define TAM 62
 
 using namespace std;
-
-
 
 int main(){
     fstream arquivo;
