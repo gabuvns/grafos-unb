@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 
 #define TAM 62
 
@@ -46,6 +45,19 @@ class Grafo{
 
         void setConexoesTotal(int number){
             this->conexoesTotal = number;
+        }
+
+        //Retorna um Vertice equivalente ao int fornecido
+        Vertice getEquivalente(int numero){
+            int aux;
+        
+            for(auto no : vetor){
+                aux = no.getNumero();            
+                if( aux == numero){   
+                    return no;
+                }
+            }
+            cout << "Erro getEquivalente! Numero = " <<numero << endl;
         }
 
         void addVertice(int num1, int num2){
@@ -97,4 +109,6 @@ class Grafo{
             }
             cout << "Total de Conexoes: " << conexoesTotal << endl;
         }
+
+        
 };
