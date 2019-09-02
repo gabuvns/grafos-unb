@@ -1,6 +1,6 @@
 /*Desenvolvido por:
-Carlos Gabriel Vilas Novas Soares  
-Carolina Estrella
+Carlos Gabriel Vilas Novas Soares - 18/0056298
+Carolina Estrella - 18/0074792
 
 Para compilar: 
 g++ -o main main.cpp -O3
@@ -174,7 +174,7 @@ int main(){
 
         for(int v=1; v <= nos; v++){
             int grau = 0;
-            cout<< "Indice: " << v << endl;
+            cout<< "Indice: " << v << endl<< "Conexoes: ";
             //verifica todos os vertices ligados ao indice atual
             for(auto x : grafo[v]){
                 grau++;
