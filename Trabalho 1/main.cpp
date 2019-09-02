@@ -1,6 +1,13 @@
 /*Desenvolvido por:
 Carlos Gabriel Vilas Novas Soares  
 Carolina Estrella
+
+Para compilar: 
+g++ -o main main.cpp -O3
+-O3 é utilizado para otimizar o tempo de execução
+
+Utiliza dados sobre relacionamentos de golfinhos
+Disponivel em: http://www.cise.ufl.edu/research/sparse/matrices/Newman/dolphins
 */
 
 #include <iostream>
@@ -171,19 +178,19 @@ int main(){
             //verifica todos os vertices ligados ao indice atual
             for(auto x : grafo[v]){
                 grau++;
-                cout<<  " " << x;
+                cout << x << " ";
             }
-            cout<<endl;
+            cout << endl;
             cout << "Grau: " << grau << endl;
             double coefaglomeracao = coeficiente(grafo, v);
             cout << "Coeficiente de Aglomeração: " << coefaglomeracao <<endl;
             coeftotal+=coefaglomeracao;
             cout<< "==========================================" <<endl;
         }
-
-        cout<<endl;
         cout<< "Coeficiente médio de aglomeração: "<< coeftotal/nos << endl;
-        cout<< "Total de conexoes: " << conexoes << endl;
+        cout<< "Total de conexoes: " << conexoes << endl << endl;
+        
+        
         
         //resetamos o arquivo para seu inicio
         arquivo.clear();
@@ -219,6 +226,6 @@ int main(){
         arquivo.close();
         
     }
-    
+    cout<< "Total de cliques maximais: " << total << endl;
     return 0;
 }

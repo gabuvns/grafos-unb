@@ -1,3 +1,7 @@
+// Arquivo provisorio
+// Nao necessario para a versao final
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>

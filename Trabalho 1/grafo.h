@@ -57,7 +57,6 @@ class Grafo{
                     return no;
                 }
             }
-            cout << "Erro getEquivalente! Numero = " << numero << endl;
         }
 
         void addVertice(int num1, int num2){
