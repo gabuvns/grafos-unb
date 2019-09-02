@@ -64,7 +64,7 @@ int main(){
         //verifica todos os vertices ligados ao indice atual
         for(auto x : grafo[v]){
             grau++;
-            cout<< "->" << x;
+            cout<<  " " << x;
         }
         cout<<endl;
         cout << "Grau: " << grau << endl;
