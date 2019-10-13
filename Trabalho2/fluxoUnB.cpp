@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <cstring>
 #include "fluxoUnB.h"
 
 using namespace std;
@@ -46,6 +47,7 @@ void Materia::ordenacao_topologica(){
 	stack<int> pilha;
 
 	//Vetor de visitados
+	int n = 0;
 	int visited[n];
 
 	//inicializando vetor 
@@ -55,7 +57,22 @@ void Materia::ordenacao_topologica(){
 }
 
 
-void cria_conexao(int src, int dst, vector<Materia> vetor_mat){
+void cria_conexao(int dst, int src, vector<Materia> vetor_mat){
+		Materia itsrc = vetor_mat.begin();
+		Materia itdest = vetor_mat.begin();
+
+		for(auto it : vetor_mat){
+			if(src == it->codigo){
+				itsrc=it->foo;
+			}
+		}
+
+		for(auto it : vetor_mat){
+			if(dst == it->codigo){
+				dst=it;
+			}
+		}
+		itsrc.addConec(itdest);
 
 }
 
@@ -75,7 +92,7 @@ void le_arquivo(){
 	int codigo;
 	int creditos;
 	int total_elem = 0;
-	Materia materia_aux; 
+	Materia materia_aux(0); 
 
 	while(arquivo >> rword){
 		total_elem = stoi(rword);
@@ -100,12 +117,16 @@ void le_arquivo(){
 		//If colocado somente por segurança
 		if(!rword.compare("conexoes")){
 			arquivo >> rword;
+			total_elem = stoi(rword);
 			int dst, src;
 
-			if(is_number(rword)){
-				
-			}
-			criaconexao();
+			for(int i = 0; i < total_elem; i++){
+				arquivo >> rword;
+				dst = stoi(rword);
+				arquivo >> rword;
+				src = stoi(rword);
+				cria_conexao(dst, src, vetor_mat);
+			}		
 		}
 
 	}

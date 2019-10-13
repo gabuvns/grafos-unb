@@ -4,11 +4,11 @@ using namespace std;
 class Materia{
     private:
         vector<Materia> posreq;
-	    string *nome;
+	    string nome;
         string abreviatura;
 	    int codigo;
 	    int creditos;
-        int V; //Nro de vértices
+        int V = 0; //Nro de vértices
         list<int> *adj; //Ponteiro para um vetor contendo a lista de adjacência
 
     public:
@@ -19,16 +19,21 @@ class Materia{
 
         void ordenacao_topologica();
 
+        void addConec(Materia aux){
+            this->posreq.push_back(aux);
+            this->V++;
+        }
+
         string getNome(){
             return this->nome;
         }
         void setNome(string nome){
-            this->nome = nome;
+            this->nome =nome;
         }
         string getAbreviatura(){
             return this -> abreviatura;
         }
-        voit setAbrev(string nome){
+        void setAbrev(string nome){
             this->abreviatura = nome;
         }
 
@@ -44,9 +49,6 @@ class Materia{
         void setCreditos(int creditos){
             this->creditos = creditos;
         }
-
-        void setVertices(int v){
-            this->vertices = 
-        }
+        
 
 };
