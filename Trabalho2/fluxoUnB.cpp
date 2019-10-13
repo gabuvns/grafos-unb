@@ -56,7 +56,7 @@ void Materia::ordenacao_topologica(){
 	
 }
 
-
+//Adiciona a conexao em soruce do elemento destiny
 void cria_conexao(int dst, int src, vector<Materia> vetor_mat){
 		Materia itsrc = vetor_mat.front();
 		Materia itdest = vetor_mat.front();
