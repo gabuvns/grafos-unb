@@ -1,31 +1,34 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 class Materia{
     private:
         vector<Materia> posreq;
-	    string nome[50];
+	    string *nome;
         string abreviatura;
 	    int codigo;
 	    int creditos;
 
         public:
-            string getNome(){
+            string* getNome(){
                 return this->nome;
             }
-            void setNome(string nome){
+            void setNome(string *nome){
                 this->nome = nome;
             }
 
-            void getCodigo(){
+            int getCodigo(){
                 return this->codigo;
             }
             void setCodigo(int codigo){
                 this->codigo = codigo;
             }
-            void getCreditos(){
+            int getCreditos(){
                 return this->creditos;
             }
             void setCreditos(int creditos){
                 this->creditos = creditos;
             }
 
-
-}
+};
