@@ -48,7 +48,7 @@ Introducao_a_Inteligencia_Artificial IIA
 116653 4
 Software_Basico SB
 116432 4
-Fundamentos_de_Sistemas_Operacionais FTC
+Fundamentos_de_Sistemas_Operacionais SO
 117960 4
 Automatos_e_Computabilidade AC
 116882 6
