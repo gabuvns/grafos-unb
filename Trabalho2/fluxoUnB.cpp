@@ -58,18 +58,19 @@ void Materia::ordenacao_topologica(){
 
 
 void cria_conexao(int dst, int src, vector<Materia> vetor_mat){
-		Materia itsrc = vetor_mat.begin();
-		Materia itdest = vetor_mat.begin();
+		Materia itsrc = vetor_mat.front();
+		Materia itdest = vetor_mat.front();
 
-		for(auto it : vetor_mat){
+
+		for(auto  &it : vetor_mat){
 			if(src == it->codigo){
-				itsrc=it->foo;
+				itsrc=it;
 			}
 		}
 
-		for(auto it : vetor_mat){
+		for(auto  &it : vetor_mat){
 			if(dst == it->codigo){
-				dst=it;
+				itdest=it;
 			}
 		}
 		itsrc.addConec(itdest);
