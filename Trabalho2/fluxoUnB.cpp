@@ -63,13 +63,13 @@ void cria_conexao(int dst, int src, vector<Materia> vetor_mat){
 
 
 		for(auto  &it : vetor_mat){
-			if(src == it->codigo){
+			if(src == it.getCodigo()){
 				itsrc=it;
 			}
 		}
 
 		for(auto  &it : vetor_mat){
-			if(dst == it->codigo){
+			if(dst == it.getCodigo()){
 				itdest=it;
 			}
 		}
