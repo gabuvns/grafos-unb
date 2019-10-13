@@ -6,7 +6,7 @@
 #include "fluxoUnB.h"
 
 using namespace std;
-
+int total =0;
 //Reformular
 void gen_dot(){
 	std::ofstream arquivo ("fluxo.dot");
@@ -58,17 +58,17 @@ void Materia::ordenacao_topologica(){
 
 //Adiciona a conexao em soruce do elemento destiny
 void cria_conexao(int dst, int src, vector<Materia> vetor_mat){
-		Materia itsrc = vetor_mat.front();
-		Materia itdest = vetor_mat.front();
+		Materia itsrc(0);
+		Materia itdest(0); 
 
-
-		for(auto  &it : vetor_mat){
+		total++;
+		for(auto it : vetor_mat){
 			if(src == it.getCodigo()){
 				itsrc=it;
 			}
 		}
 
-		for(auto  &it : vetor_mat){
+		for(auto it : vetor_mat){
 			if(dst == it.getCodigo()){
 				itdest=it;
 			}
@@ -96,20 +96,30 @@ void le_arquivo(){
 	Materia materia_aux(0); 
 
 	while(arquivo >> rword){
-		total_elem = stoi(rword);
 
+		//total_elem = stoi(rword);
 		if(!rword.compare("materias")){
 			arquivo >> rword;
+
 			while(rword.compare("conexoes") != 0){
+
+				total_elem = stoi(rword);
+					arquivo >>rword;
 				for(int i = 0; i< total_elem;i++){
+					
 					materia_aux.setNome(rword);
 					arquivo >> rword;
+
 					materia_aux.setAbrev(rword);
 					arquivo >> rword;
+
 					materia_aux.setCodigo(stoi(rword));
 					arquivo >> rword;
+
+				
 					materia_aux.setCreditos(stoi(rword));
-					arquivo >> rword;		
+					arquivo >> rword;	
+
 					vetor_mat.push_back(materia_aux);
 				}
 
@@ -118,12 +128,14 @@ void le_arquivo(){
 		//If colocado somente por segurança
 		if(!rword.compare("conexoes")){
 			arquivo >> rword;
+
 			total_elem = stoi(rword);
 			int dst, src;
 
 			for(int i = 0; i < total_elem; i++){
 				arquivo >> rword;
 				dst = stoi(rword);
+
 				arquivo >> rword;
 				src = stoi(rword);
 				cria_conexao(dst, src, vetor_mat);
@@ -136,5 +148,5 @@ void le_arquivo(){
 
 
 int main(){
-	
+	le_arquivo();
 }
