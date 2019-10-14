@@ -1,4 +1,6 @@
-#include<bits/stdc++.h> 
+#include<bits/stdc++.h>
+#include <iostream>
+#include <vector> 
 using namespace std;
 
 class Materia{
@@ -18,10 +20,22 @@ class Materia{
         void addVertice(int x, int y); 
 
         void ordenacao_topologica();
+    
 
         void addConec(Materia aux){
+            cout << "src: " << this->nome << endl;
+            cout << "dst: " << aux.getNome() <<endl;
+            cout << "tamanho vetor b4: " << this->posreq.size() << endl;
+    
             this->posreq.push_back(aux);
+
+            cout << "tamanho vetor aft: " << this->posreq.size() << endl;
+            cout <<endl;
             this->V++;
+        }
+
+        int getTamVetor(){
+            return this->posreq.size();
         }
 
         string getNome(){
@@ -51,7 +65,7 @@ class Materia{
         }
         void printPosreq(){
             cout << "conexoes:" << endl;
-            for(auto i: posreq){
+            for(auto i: this->posreq){
                 cout << i.getNome() << " -> ";
             }
             cout <<endl;

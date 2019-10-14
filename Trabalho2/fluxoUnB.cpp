@@ -138,13 +138,17 @@ void le_arquivo(){
 
 				arquivo >> rword;
 				src = stoi(rword);
+
 				cria_conexao(dst, src, vetor_mat);
+
 			}		
 		}
 
 	}
 	for(auto i: vetor_mat){
 		cout << "Nome:" << i.getNome() <<endl;
+		cout << "tamhno vetor "<< i.getTamVetor() << endl;
+
 		i.printPosreq();
 	}
 	
