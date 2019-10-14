@@ -5,12 +5,12 @@ using namespace std;
 
 class Materia{
     private:
-        vector<Materia> posreq;
+        vector<int> posreq;
 	    string nome;
         string abreviatura;
 	    int codigo;
 	    int creditos;
-        int V = 0; //Nro de vértices
+        int V = 0; //Nro de vé rtices
         list<int> *adj; //Ponteiro para um vetor contendo a lista de adjacência
 
     public:
@@ -20,19 +20,17 @@ class Materia{
         void addVertice(int x, int y); 
 
         void ordenacao_topologica();
-    
-
-        void addConec(Materia aux){
-            cout << "src: " << this->nome << endl;
-            cout << "dst: " << aux.getNome() <<endl;
-            cout << "tamanho vetor b4: " << this->posreq.size() << endl;
-    
-            this->posreq.push_back(aux);
-
-            cout << "tamanho vetor aft: " << this->posreq.size() << endl;
+        void printVetor(){
+            for(int i: this->posreq){
+                cout << "->" << i;
+            }
             cout <<endl;
-            this->V++;
         }
+        void setVetor(vector<int> v){
+            this->posreq = v;
+            this->V = v.size();
+        }
+
 
         int getTamVetor(){
             return this->posreq.size();
@@ -63,13 +61,13 @@ class Materia{
         void setCreditos(int creditos){
             this->creditos = creditos;
         }
-        void printPosreq(){
-            cout << "conexoes:" << endl;
-            for(auto i: this->posreq){
-                cout << i.getNome() << " -> ";
-            }
-            cout <<endl;
-        }
+        // void printPosreq(){
+        //     cout << "conexoes:" << endl;
+        //     for(auto i: this->posreq){
+        //         cout << i.getNome() << " -> ";
+        //     }
+        //     cout <<endl;
+        // }
         
 
 };
