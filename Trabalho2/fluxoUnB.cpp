@@ -145,6 +145,7 @@ void le_arquivo(){
 	}
 	for(auto i: vetor_mat){
 		cout << "Nome:" << i.getNome() <<endl;
+		i.printPosreq();
 	}
 	
 }

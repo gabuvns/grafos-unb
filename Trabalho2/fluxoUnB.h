@@ -49,6 +49,13 @@ class Materia{
         void setCreditos(int creditos){
             this->creditos = creditos;
         }
+        void printPosreq(){
+            cout << "conexoes:" << endl;
+            for(auto i: posreq){
+                cout << i.getNome() << " -> ";
+            }
+            cout <<endl;
+        }
         
 
 };
