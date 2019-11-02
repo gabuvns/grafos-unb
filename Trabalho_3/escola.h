@@ -1,13 +1,13 @@
-#ifndef _PROFESSOR_H_
-#define _PROFESSOR_H_
+#ifndef _ESCOLA_H_
+#define _ESCOLA_H_
+
 #include <iostream>
 #include <vector> 
 using namespace std;
 
-class Professor{
+class Escola{
     private:
         string codigo;
-        int habilitacoes;
         vector<string> pref;
     
     public:
@@ -17,12 +17,7 @@ class Professor{
         string getCodigo(){
             return this->codigo;
         }
-        void setHabilitacoes(int hab){
-            this->habilitacoes = hab;
-        }
-        int getHabilitacoes(){
-            return this->habilitacoes;
-        }
+
         void setPref(vector<string> _pref){
             this->pref = _pref;
         }
@@ -30,5 +25,4 @@ class Professor{
             return this->pref;
         }
 };
-
 #endif
