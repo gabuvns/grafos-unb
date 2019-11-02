@@ -7,13 +7,21 @@ using namespace std;
 
 class Escola{
     private:
+        bool livre;
         string codigo;
         vector<string> pref;
     
     public:
+        void setLivre(bool l){
+            this->livre = l;
+        }
+        bool getLivre(){
+            return this->livre;
+        }
         void setCodigo(string cod){
             this->codigo = cod;
         }
+
         string getCodigo(){
             return this->codigo;
         }
