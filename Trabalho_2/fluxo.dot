@@ -1,0 +1,50 @@
+digraph fluxo {
+    //Primeiro semestres
+    IS;
+    ISC;
+    C1;
+    APC;
+    FTC;
+    //Segundo semestre
+    APC -> CL;
+    APC -> LCL;
+    C1 -> C2;
+    IAL;
+    APC -> ED;
+    //Terceiro semestre
+    CL -> OAC;
+    LCL -> OAC;
+    ED -> TP1;
+    A1;
+    C2 -> CN;
+    C1 -> PE;
+    //Quarto semestre
+    ED -> LC1;
+    TP1 -> TP2;
+    ED -> TAG;
+    ED -> RC;
+    //Quinto semestre
+    TP1 -> ES;
+
+    ED -> LP;
+    OAC -> PC;
+    TP2 -> PC;
+    ED -> BD;
+    ED -> IIA;
+    //Sexto semestre
+    OAC -> SB;
+    ED -> SB;
+    PC -> SO;
+    A1 -> AC;
+    ED -> SI;
+    PE -> CE;
+    ED -> CE;
+    //Setimo semestre
+    C1 -> PAA;
+    ED -> PAA;
+    LP -> CMP;
+    SB -> CMP;
+    AC -> CMP;
+    RC -> SC;
+
+}
