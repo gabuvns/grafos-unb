@@ -38,6 +38,19 @@ Professor cria_professor(vector<string> nolido){
     paux.setPref(preferencias);
     return paux;
 
+}
+void printa_professores(vector<Professor> professores){
+    for(auto i: professores){
+            cout << "Codigo: " << i.getCodigo() << endl;
+            cout << "Hab: " << i.getHabilitacoes() << endl;
+            cout << "Preferencias: ";
+
+            for(auto j: i.getPref()){
+                cout << j << " ";
+            }   
+            cout << endl;
+        
+        }
 }   
 
 vector<Professor> pega_input(){
@@ -54,25 +67,8 @@ vector<Professor> pega_input(){
        info_lida = normalize(linha);
        professores.push_back(cria_professor(info_lida));
     }
-    //Somente para teste
-    int j = 1;
-
-    for(auto i: professores){
-        cout << "Codigo: " << i.getCodigo() << endl;
-        cout << "Hab: " << i.getHabilitacoes() << endl;
-        cout << "Preferencias: ";
-
-        for(auto j: i.getPref()){
-            cout << "erro1" <<endl;
-            cout << j << " ";
-            cout << "erro2" <<endl;
-        
-        }    
-        cout << endl;
-        j++;
-    }
-    
-
+    printa_professores(professores);
+    return professores;
 }
 int main(){
     pega_input();
