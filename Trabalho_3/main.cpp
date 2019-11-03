@@ -4,6 +4,8 @@
 #include <fstream>
 #include "professor.h"
 #include "escola.h"
+#include <unistd.h>
+
 
 using namespace std;
 
@@ -164,44 +166,8 @@ int possui_req(Escola escola, Professor paux1, vector<Professor> professores){
         }
     }
 }
-int compareprofessors(Professor paux1, Professor paux2){
-    
+int compareprofessors(Professor paux1, Professor paux2){  
     return paux1.getHabilitacoes() > paux2.getHabilitacoes();
-}
-void casamento_estavel(vector<Professor> professores, vector<Escola> escolas){
-    while(professoreslivres(professores)){
-        Professor paux;
-        Escola eaux;
-        for(auto i : professores){
-            for(auto j : i.getPref()){
-                eaux = pega_escola(escolas, j);
-                if(possui_req(eaux, i, professores)){
-                    if(eaux.getLivre() == 1){
-                        cout <<"entrou i :" << i.getCodigo() << "entrou j:" << j << endl;
-
-                        eaux.assignProfessor(i.getCodigo());
-                        paux.setEscola(eaux.getCodigo());
-                        paux.setLivre(0);
-                        eaux.setLivre(0);
-                    
-                    
-                    }
-                    else{
-                        if(eaux.assignedsize() == 0){
-                            if(compareprofessors(paux, pega_professor(professores, eaux.getAssigned()[0]))){
-                                pega_professor(professores, eaux.getAssigned()[0]).setEscola("");
-                                pega_professor(professores, eaux.getAssigned()[0]).setLivre(1);
-                                paux.setLivre(0);
-                                paux.setEscola(eaux.getCodigo());
-                                eaux.popProfessor();
-                                eaux.assignProfessor(paux.getCodigo());
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 void print_relacoes(vector<Professor> professores, vector<Escola> escola){
@@ -212,13 +178,51 @@ void print_relacoes(vector<Professor> professores, vector<Escola> escola){
     for(auto i : escola){
         cout <<  "Nome escola: " << i.getCodigo() << endl;
         cout << "Professor(es): ";
-        for(auto j: i.getPref()){
+        for(auto j: i.getAssigned()){
             cout << j << " ";
         }
         cout <<endl;
     }
     
 }
+void casamento_estavel(vector<Professor> professores, vector<Escola> escolas){
+    while(professoreslivres(professores)){
+        Professor paux;
+        Escola eaux;
+        for(size_t i = 0; i <professores.size(); i++){
+            for(auto j : professores.at(i).getPref()){
+                eaux = pega_escola(escolas, j);
+                if(possui_req(eaux, professores.at(i), professores)){
+                    if(eaux.getLivre() == 1){
+                        eaux.assignProfessor(professores.at(i).getCodigo());
+                        professores.at(i).setEscola(eaux.getCodigo());
+                        professores.at(i).setLivre(0);
+                        usleep(50);
+                        cout << "professor analisado: " << professores.at(i).getCodigo() <<endl;
+                        eaux.setLivre(0);
+                        
+
+                    }
+                    else{
+                        if(eaux.assignedsize() == 0){
+                            if(compareprofessors(paux, pega_professor(professores, eaux.getAssigned()[0]))){
+                                pega_professor(professores, eaux.getAssigned()[0]).setEscola("");
+                                pega_professor(professores, eaux.getAssigned()[0]).setLivre(1);
+                                paux.setLivre(0);
+                                paux.setEscola(eaux.getCodigo());
+                                eaux.popProfessor();
+                                eaux.assignProfessor(paux.getCodigo());
+                               
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 
 int main(){
     vector<Professor> professores = pega_input_professor();
